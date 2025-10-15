@@ -2,12 +2,12 @@
 function StopWatch(){
     this.duration = 0;
     let isRunning = false;
-    let startTime;
+    let startTime
 
     this.start = function() {
         if (isRunning)
-            throw new Error('Stopwatch has already started!');
-        isRunning = true;
+            throw new Error('Stopwatch has already started!'); 
+                isRunning = true;
         startTime = Date.now();
     }
 
