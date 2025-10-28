@@ -1,7 +1,9 @@
-import { Grid, GridItem } from "@chakra-ui/react";
+import { Grid, GridItem, Input } from "@chakra-ui/react";
 import "./App.css";
 import SideBar from "./components/SideBar";
 import { ColorModeButton } from "./components/ui/color-mode";
+import TaskList from "./components/TaskList";
+import AddTask from "./components/AddTask";
 
 function App() {
   return (
@@ -33,8 +35,9 @@ function App() {
         <GridItem area={"aside"} display={{ base: "none", md: "block" }}>
           <SideBar></SideBar>
         </GridItem>
-        <GridItem area={"main"} backgroundColor="#141416ff" padding={10}>
-          Main
+        <GridItem area={"main"} backgroundColor="#141416ff" paddingX={10}>
+          <TaskList />
+          <AddTask />
         </GridItem>
       </Grid>
     </>
