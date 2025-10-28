@@ -1,29 +1,32 @@
 import { List, Button } from "@chakra-ui/react";
 import { BsList } from "react-icons/bs";
+import { useColorModeValue } from "./ui/color-mode";
 
 const SideBar = () => {
   const categories = [
-    { slug: "todo", name: "ToDo" },
-    { slug: "done", name: "Done" },
+    { slug: "homework", name: "Homework" },
+    { slug: "work", name: "Work" },
   ];
+
+  const bg = useColorModeValue("#F4F4F4", "gray.900");
 
   return (
     <List.Root
       width="100%"
-      height="90vh"
-      gap={3}
-      backgroundColor="#F4F4F4"
+      height="100vh"
+      gap={1}
+      backgroundColor={bg}
       padding={1}
     >
       {categories.map((category) => (
-        <List.Item id={category.slug}>
+        <List.Item key={category.slug}>
           <Button
             width="100%"
             justifyContent="flex-start"
             variant="subtle"
             value={category.slug}
           >
-            <List.Indicator asChild color="blue.800">
+            <List.Indicator asChild color="blue.700">
               <BsList />
             </List.Indicator>
             {category.name}
