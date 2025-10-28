@@ -1,4 +1,4 @@
-import { Grid, GridItem, Input } from "@chakra-ui/react";
+import { Grid, GridItem } from "@chakra-ui/react";
 import "./App.css";
 import SideBar from "./components/SideBar";
 import { ColorModeButton } from "./components/ui/color-mode";
@@ -15,7 +15,7 @@ function App() {
         }}
         templateColumns={{
           base: "1fr",
-          md: "250px 1fr",
+          md: "200px 1fr",
         }}
         height="100vh"
         overflow="hidden"
