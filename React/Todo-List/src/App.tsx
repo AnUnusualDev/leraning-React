@@ -1,12 +1,33 @@
-import { Text, Tooltip } from "@chakra-ui/react";
+import { Grid, GridItem, Show, useBreakpoint } from "@chakra-ui/react";
 import "./App.css";
-import { ColorModeButton } from "./components/ui/color-mode";
 
 function App() {
   return (
     <>
-      <Text>Hello World</Text>
-      <ColorModeButton />
+      <Grid
+        templateAreas={{
+          base: `"nav" "main"`,
+          md: `"nav nav" "aside main"`,
+        }}
+        templateColumns={{
+          base: "1fr",
+          md: "250px 1fr",
+        }}
+      >
+        <GridItem area={"nav"} backgroundColor="green">
+          Nav
+        </GridItem>
+        <GridItem
+          area={"aside"}
+          backgroundColor="red"
+          display={{ base: "none", md: "block" }}
+        >
+          Aside
+        </GridItem>
+        <GridItem area={"main"} backgroundColor="yellow">
+          Main
+        </GridItem>
+      </Grid>
     </>
   );
 }
