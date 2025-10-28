@@ -1,5 +1,6 @@
-import { Grid, GridItem, Show, useBreakpoint } from "@chakra-ui/react";
+import { Grid, GridItem } from "@chakra-ui/react";
 import "./App.css";
+import SideBar from "./components/SideBar";
 
 function App() {
   return (
@@ -17,12 +18,8 @@ function App() {
         <GridItem area={"nav"} backgroundColor="green">
           Nav
         </GridItem>
-        <GridItem
-          area={"aside"}
-          backgroundColor="red"
-          display={{ base: "none", md: "block" }}
-        >
-          Aside
+        <GridItem area={"aside"} display={{ base: "none", md: "block" }}>
+          <SideBar></SideBar>
         </GridItem>
         <GridItem area={"main"} backgroundColor="yellow">
           Main
