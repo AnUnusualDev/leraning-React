@@ -1,3 +1,4 @@
+import type { Task } from "@/App";
 import {
   Box,
   Checkbox,
@@ -8,36 +9,18 @@ import {
   VStack,
 } from "@chakra-ui/react";
 
-const TaskList = () => {
-  const tasks = [
-    { isDone: false, title: "Task number 1", date: "22.05.2026" },
-    { isDone: false, title: "Task number 1", date: "22.05.2026" },
-    { isDone: false, title: "Task number 1", date: "22.05.2026" },
-    { isDone: false, title: "Task number 1", date: "22.05.2026" },
-    { isDone: false, title: "Task number 1" },
-    { isDone: false, title: "Task number 1", date: "22.05.2026" },
-    { isDone: false, title: "Task number 1", date: "22.05.2026" },
-    { isDone: false, title: "Task number 1" },
-    { isDone: false, title: "Task number 1", date: "22.05.2026" },
-    { isDone: false, title: "Task number 1" },
-    { isDone: false, title: "Task number 1", date: "22.05.2026" },
-    { isDone: false, title: "Task number 1", date: "22.05.2026" },
-    { isDone: false, title: "Task number 1", date: "22.05.2026" },
-    { isDone: false, title: "Task number 1" },
-    { isDone: false, title: "Task number 1", date: "22.05.2026" },
-    { isDone: false, title: "Task number 1", date: "22.05.2026" },
-    { isDone: false, title: "Task number 1", date: "22.05.2026" },
-    { isDone: false, title: "Task number 1", date: "22.05.2026" },
-    { isDone: false, title: "Task number 1", date: "22.05.2026" },
-    { isDone: false, title: "Task number 1", date: "22.05.2026" },
-  ];
+interface Props {
+  tasks: Task[] | null;
+}
+
+const TaskList = ({ tasks }: Props) => {
   return (
     <VStack height="calc(100vh - 120px)">
       <Text>Tasks</Text>
       <ScrollArea.Root height="100%" marginBottom="20px">
         <ScrollArea.Viewport>
           <List.Root gap={1.5}>
-            {tasks.map((task) => (
+            {tasks?.map((task) => (
               <List.Item key={tasks.indexOf(task)} display="flex">
                 <Box
                   display="flex"
@@ -58,7 +41,9 @@ const TaskList = () => {
                     </Checkbox.Root>
                     <Text marginBottom="5px">{task.title}</Text>
                   </HStack>
-                  <Text marginBottom="5px">{task.date}</Text>
+                  <Text marginBottom="5px">
+                    {task.date?.toLocaleDateString()}
+                  </Text>
                 </Box>
               </List.Item>
             ))}

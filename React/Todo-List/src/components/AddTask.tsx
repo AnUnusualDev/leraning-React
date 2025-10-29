@@ -1,6 +1,5 @@
 import { HStack, IconButton, Input, InputGroup } from "@chakra-ui/react";
 import { FiArrowRight } from "react-icons/fi";
-import { IoCalendarOutline } from "react-icons/io5";
 
 const AddTask = () => {
   return (
@@ -8,9 +7,7 @@ const AddTask = () => {
       <InputGroup
         endElement={
           <>
-            <IconButton variant="subtle" size={"sm"}>
-              <IoCalendarOutline />
-            </IconButton>
+            <Input type="date" size={"sm"}></Input>
             <IconButton variant="subtle" size={"sm"}>
               <FiArrowRight />
             </IconButton>
