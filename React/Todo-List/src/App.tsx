@@ -15,15 +15,20 @@ export interface Task {
 function App() {
   const [tasks, setTasks] = useState<Task[] | null>([
     { isDone: false, title: "Task number 1", date: new Date("2026-05-22") },
-    { isDone: false, title: "Task number 1", date: new Date("2026-05-22") },
-    { isDone: false, title: "Task number 1", date: new Date("2026-05-22") },
-    { isDone: false, title: "Task number 1", date: new Date("2026-05-22") },
-    { isDone: false, title: "Task number 1", date: new Date("2026-05-22") },
-    { isDone: false, title: "Task number 1", date: new Date("2026-05-22") },
-    { isDone: false, title: "Task number 1", date: new Date("2026-05-22") },
-    { isDone: false, title: "Task number 1", date: new Date("2026-05-22") },
-    { isDone: false, title: "Task number 1", date: new Date("2026-05-22") },
+    { isDone: false, title: "Task number 2", date: new Date("2026-05-22") },
+    { isDone: false, title: "Task number 3", date: new Date("2026-05-22") },
+    { isDone: false, title: "Task number 4", date: new Date("2026-05-22") },
+    { isDone: false, title: "Task number 5", date: new Date("2026-05-22") },
+    { isDone: false, title: "Task number 6", date: new Date("2026-05-22") },
+    { isDone: false, title: "Task number 7", date: new Date("2026-05-22") },
+    { isDone: false, title: "Task number 8", date: new Date("2026-05-22") },
+    { isDone: false, title: "Task number 9", date: new Date("2026-05-22") },
   ]);
+
+  const deleteTask = (taskKey: number) => {
+    if (tasks)
+      setTasks(tasks?.filter((task) => tasks.indexOf(task) !== taskKey));
+  };
 
   return (
     <>
@@ -55,7 +60,7 @@ function App() {
           <SideBar></SideBar>
         </GridItem>
         <GridItem area={"main"} backgroundColor="#141416ff" paddingX={10}>
-          <TaskList tasks={tasks} />
+          <TaskList tasks={tasks} onDeleteTask={(key) => deleteTask(key)} />
           <AddTask
             onAdd={(title, date) =>
               tasks &&

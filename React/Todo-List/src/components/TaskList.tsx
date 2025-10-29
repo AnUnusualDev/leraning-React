@@ -1,19 +1,13 @@
 import type { Task } from "@/App";
-import {
-  Box,
-  Checkbox,
-  HStack,
-  List,
-  ScrollArea,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
+import { List, ScrollArea, Text, VStack } from "@chakra-ui/react";
+import TaskItem from "./TaskItem";
 
 interface Props {
   tasks: Task[] | null;
+  onDeleteTask: (taskKey: number) => void;
 }
 
-const TaskList = ({ tasks }: Props) => {
+const TaskList = ({ tasks, onDeleteTask }: Props) => {
   return (
     <VStack height="calc(100vh - 120px)">
       <Text>Tasks</Text>
@@ -21,31 +15,13 @@ const TaskList = ({ tasks }: Props) => {
         <ScrollArea.Viewport>
           <List.Root gap={1.5}>
             {tasks?.map((task) => (
-              <List.Item key={tasks.indexOf(task)} display="flex">
-                <Box
-                  display="flex"
-                  justifyContent="space-between"
-                  background="gray.800"
-                  padding={3}
-                  borderRadius={10}
-                  width="100%"
-                >
-                  <HStack>
-                    <Checkbox.Root
-                      size="sm"
-                      variant="solid"
-                      colorPalette="blue"
-                    >
-                      <Checkbox.HiddenInput />
-                      <Checkbox.Control />
-                    </Checkbox.Root>
-                    <Text marginBottom="5px">{task.title}</Text>
-                  </HStack>
-                  <Text marginBottom="5px">
-                    {task.date?.toLocaleDateString()}
-                  </Text>
-                </Box>
-              </List.Item>
+              <TaskItem
+                taskKey={tasks.indexOf(task)}
+                key={tasks.indexOf(task)}
+                date={task.date}
+                title={task.title}
+                onDeleteTask={(key) => onDeleteTask(key)}
+              />
             ))}
           </List.Root>
         </ScrollArea.Viewport>
