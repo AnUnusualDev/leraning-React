@@ -1,22 +1,48 @@
 import { HStack, IconButton, Input, InputGroup } from "@chakra-ui/react";
+import { useRef, type FormEvent } from "react";
 import { FiArrowRight } from "react-icons/fi";
 
-const AddTask = () => {
+interface Props {
+  onAdd: (title: string, date?: Date) => void;
+}
+
+const AddTask = ({ onAdd }: Props) => {
+  const titleRef = useRef<HTMLInputElement>(null);
+  const dateRef = useRef<HTMLInputElement>(null);
+
+  const onSubmit = (event: FormEvent) => {
+    event.preventDefault();
+    const titleValue = titleRef.current?.value;
+    const dateValue =
+      dateRef.current?.value !== "" && dateRef.current?.value
+        ? new Date(dateRef.current?.value)
+        : undefined;
+
+    if (titleValue) onAdd(titleValue, dateValue);
+    console.log("Added " + titleValue, dateValue);
+
+    //empty the fields again
+    if (titleRef.current) titleRef.current.value = "";
+    if (dateRef.current) dateRef.current.value = "";
+  };
+
   return (
-    <HStack>
-      <InputGroup
-        endElement={
-          <>
-            <Input type="date" size={"sm"}></Input>
-            <IconButton variant="subtle" size={"sm"}>
-              <FiArrowRight />
-            </IconButton>
-          </>
-        }
-      >
-        <Input placeholder="Add a task" variant="subtle" />
-      </InputGroup>
-    </HStack>
+    <form onSubmit={onSubmit}>
+      <HStack>
+        <InputGroup
+          endElement={
+            <>
+              <Input ref={dateRef} type="date" size={"sm"}></Input>
+              <IconButton variant="subtle" size={"sm"} type="submit">
+                <FiArrowRight />
+              </IconButton>
+            </>
+          }
+        >
+          <Input ref={titleRef} placeholder="Add a task" variant="subtle" />
+        </InputGroup>
+      </HStack>
+    </form>
   );
 };
 

@@ -56,7 +56,12 @@ function App() {
         </GridItem>
         <GridItem area={"main"} backgroundColor="#141416ff" paddingX={10}>
           <TaskList tasks={tasks} />
-          <AddTask />
+          <AddTask
+            onAdd={(title, date) =>
+              tasks &&
+              setTasks([...tasks, { isDone: false, title: title, date: date }])
+            }
+          />
         </GridItem>
       </Grid>
     </>
