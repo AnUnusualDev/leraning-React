@@ -7,6 +7,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { RiDeleteBinLine } from "react-icons/ri";
+import { useColorModeValue } from "./ui/color-mode";
 
 interface Props {
   id: string;
@@ -26,7 +27,7 @@ const TaskItem = ({ id, title, date, onDeleteTask }: Props) => {
       <Box
         display="flex"
         justifyContent="space-between"
-        background="gray.800"
+        background={useColorModeValue("gray.100", "gray.800")}
         padding={3}
         borderRadius={10}
         width="100%"

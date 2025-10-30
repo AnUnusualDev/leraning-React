@@ -1,7 +1,7 @@
 import { Grid, GridItem } from "@chakra-ui/react";
 import "./App.css";
 import SideBar from "./components/SideBar";
-import { ColorModeButton } from "./components/ui/color-mode";
+import { ColorModeButton, useColorModeValue } from "./components/ui/color-mode";
 import TaskList from "./components/TaskList";
 import AddTask from "./components/AddTask";
 import { useState } from "react";
@@ -23,7 +23,7 @@ function App() {
     "Work",
   ]);
 
-  const [currentCategory, setCurrentCategory] = useState(categories[1]);
+  const [currentCategory, setCurrentCategory] = useState(categories[0]);
 
   const deleteTask = (id: string) => {
     if (tasks) setTasks(tasks?.filter((task) => task.id !== id));
@@ -40,6 +40,7 @@ function App() {
     setTasks([...tasks, newTask]);
   };
 
+  const bgColor = useColorModeValue("#ffffff", "#141416ff");
   return (
     <>
       <Grid
@@ -56,7 +57,7 @@ function App() {
       >
         <GridItem
           area={"nav"}
-          backgroundColor="gray.900"
+          backgroundColor={useColorModeValue("gray.100", "gray.900")}
           height="50px"
           display="flex"
           alignItems="center"
@@ -75,7 +76,7 @@ function App() {
         </GridItem>
         <GridItem
           area={"main"}
-          backgroundColor="#141416ff"
+          backgroundColor={bgColor}
           paddingX={{ base: 5, md: 10 }}
           marginTop={{ base: "-30px", md: "0px" }}
         >

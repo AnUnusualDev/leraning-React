@@ -9,7 +9,8 @@ interface Props {
 }
 
 const SideBar = ({ onClickCategory, selectedCategory, categories }: Props) => {
-  const bg = useColorModeValue("#F4F4F4", "gray.900");
+  const bg = useColorModeValue("gray.100", "gray.900");
+  const hoverColor = useColorModeValue("#d8d8d8ff", "#27272A");
 
   return (
     <List.Root
@@ -28,9 +29,9 @@ const SideBar = ({ onClickCategory, selectedCategory, categories }: Props) => {
             variant="subtle"
             value={category}
             backgroundColor={
-              selectedCategory === category ? "#27272A" : "transparent"
+              selectedCategory === category ? hoverColor : "transparent"
             }
-            _hover={{ bg: "#27272A" }}
+            _hover={{ bg: hoverColor }}
           >
             <List.Indicator asChild color="blue.700">
               <BsList />
