@@ -40,6 +40,10 @@ function App() {
     setTasks([...tasks, newTask]);
   };
 
+  const addCategory = (category: string) => {
+    setCategories([...categories, category]);
+  };
+
   const bgColor = useColorModeValue("#ffffff", "#141416ff");
   return (
     <>
@@ -72,6 +76,7 @@ function App() {
             categories={categories}
             selectedCategory={currentCategory}
             onClickCategory={(category) => setCurrentCategory(category)}
+            onAddCategory={(category) => addCategory(category)}
           />
         </GridItem>
         <GridItem
