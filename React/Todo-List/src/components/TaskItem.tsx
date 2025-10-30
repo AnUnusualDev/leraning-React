@@ -14,10 +14,11 @@ interface Props {
   isDone?: boolean;
   title: string;
   date?: Date;
+  category?: string;
   onDeleteTask: (id: string) => void;
 }
 
-const TaskItem = ({ id, title, date, onDeleteTask }: Props) => {
+const TaskItem = ({ category, id, title, date, onDeleteTask }: Props) => {
   const deleteTask = () => {
     onDeleteTask(id);
   };
@@ -38,6 +39,11 @@ const TaskItem = ({ id, title, date, onDeleteTask }: Props) => {
             <Checkbox.Control />
           </Checkbox.Root>
           <Text marginBottom="5px">{title}</Text>
+          {category && (
+            <Text color="blue.800" fontWeight="600" fontSize="14px">
+              {category}
+            </Text>
+          )}
         </HStack>
         <HStack>
           <IconButton

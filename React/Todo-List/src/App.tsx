@@ -85,10 +85,7 @@ function App() {
             currentCategory={currentCategory}
             onDeleteTask={(key) => deleteTask(key)}
           />
-          <AddTask
-            currentCategory={currentCategory}
-            onAdd={(title, date) => handleAddTask(title, date)}
-          />
+          <AddTask onAdd={(title, date) => handleAddTask(title, date)} />
         </GridItem>
       </Grid>
     </>

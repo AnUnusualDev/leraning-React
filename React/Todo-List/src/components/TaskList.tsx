@@ -26,6 +26,7 @@ const TaskList = ({ tasks, currentCategory, onDeleteTask }: Props) => {
                 id={task.id}
                 date={task.date}
                 title={task.title}
+                category={currentCategory === "All" ? task.category : ""}
                 onDeleteTask={(id) => onDeleteTask(id)}
               />
             ))}

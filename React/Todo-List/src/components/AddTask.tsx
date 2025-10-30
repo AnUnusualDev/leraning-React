@@ -3,11 +3,10 @@ import { useRef, type FormEvent } from "react";
 import { FiArrowRight } from "react-icons/fi";
 
 interface Props {
-  currentCategory: string;
   onAdd: (title: string, date?: Date) => void;
 }
 
-const AddTask = ({ currentCategory, onAdd }: Props) => {
+const AddTask = ({ onAdd }: Props) => {
   const titleRef = useRef<HTMLInputElement>(null);
   const dateRef = useRef<HTMLInputElement>(null);
 
