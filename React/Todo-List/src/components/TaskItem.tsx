@@ -9,22 +9,16 @@ import {
 import { RiDeleteBinLine } from "react-icons/ri";
 
 interface Props {
-  taskKey: number;
+  id: string;
   isDone?: boolean;
   title: string;
   date?: Date;
-  onDeleteTask: (taskKey: number) => void;
+  onDeleteTask: (taskKey: string) => void;
 }
 
-const TaskItem = ({
-  taskKey,
-  isDone = false,
-  title,
-  date,
-  onDeleteTask,
-}: Props) => {
+const TaskItem = ({ id, title, date, onDeleteTask }: Props) => {
   const deleteTask = () => {
-    onDeleteTask(taskKey);
+    onDeleteTask(id);
   };
 
   return (

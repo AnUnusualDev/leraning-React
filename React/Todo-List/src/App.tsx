@@ -7,27 +7,37 @@ import AddTask from "./components/AddTask";
 import { useState } from "react";
 
 export interface Task {
+  id: string;
   isDone: boolean;
   title: string;
   date?: Date;
+  category?: string;
 }
 
 function App() {
-  const [tasks, setTasks] = useState<Task[] | null>([
-    { isDone: false, title: "Task number 1", date: new Date("2026-05-22") },
-    { isDone: false, title: "Task number 2", date: new Date("2026-05-22") },
-    { isDone: false, title: "Task number 3", date: new Date("2026-05-22") },
-    { isDone: false, title: "Task number 4", date: new Date("2026-05-22") },
-    { isDone: false, title: "Task number 5", date: new Date("2026-05-22") },
-    { isDone: false, title: "Task number 6", date: new Date("2026-05-22") },
-    { isDone: false, title: "Task number 7", date: new Date("2026-05-22") },
-    { isDone: false, title: "Task number 8", date: new Date("2026-05-22") },
-    { isDone: false, title: "Task number 9", date: new Date("2026-05-22") },
+  const [tasks, setTasks] = useState<Task[]>([]);
+
+  const [categories, setCategories] = useState<string[]>([
+    "All",
+    "Homework",
+    "Work",
   ]);
 
-  const deleteTask = (taskKey: number) => {
-    if (tasks)
-      setTasks(tasks?.filter((task) => tasks.indexOf(task) !== taskKey));
+  const [currentCategory, setCurrentCategory] = useState(categories[1]);
+
+  const deleteTask = (id: string) => {
+    if (tasks) setTasks(tasks?.filter((task) => task.id !== id));
+  };
+
+  const handleAddTask = (title: string, date?: Date) => {
+    const newTask: Task = {
+      id: crypto.randomUUID(),
+      isDone: false,
+      title,
+      date,
+      category: currentCategory,
+    };
+    setTasks([...tasks, newTask]);
   };
 
   return (
@@ -57,15 +67,21 @@ function App() {
           <ColorModeButton />
         </GridItem>
         <GridItem area={"aside"} display={{ base: "none", md: "block" }}>
-          <SideBar></SideBar>
+          <SideBar
+            categories={categories}
+            selectedCategory={currentCategory}
+            onClickCategory={(category) => setCurrentCategory(category)}
+          />
         </GridItem>
         <GridItem area={"main"} backgroundColor="#141416ff" paddingX={10}>
-          <TaskList tasks={tasks} onDeleteTask={(key) => deleteTask(key)} />
+          <TaskList
+            tasks={tasks}
+            currentCategory={currentCategory}
+            onDeleteTask={(key) => deleteTask(key)}
+          />
           <AddTask
-            onAdd={(title, date) =>
-              tasks &&
-              setTasks([...tasks, { isDone: false, title: title, date: date }])
-            }
+            currentCategory={currentCategory}
+            onAdd={(title, date) => handleAddTask(title, date)}
           />
         </GridItem>
       </Grid>

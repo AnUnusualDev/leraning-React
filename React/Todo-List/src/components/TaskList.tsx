@@ -3,24 +3,30 @@ import { List, ScrollArea, Text, VStack } from "@chakra-ui/react";
 import TaskItem from "./TaskItem";
 
 interface Props {
-  tasks: Task[] | null;
-  onDeleteTask: (taskKey: number) => void;
+  tasks: Task[];
+  currentCategory: string;
+  onDeleteTask: (taskKey: string) => void;
 }
 
-const TaskList = ({ tasks, onDeleteTask }: Props) => {
+const TaskList = ({ tasks, currentCategory, onDeleteTask }: Props) => {
+  let tasksToDisplay: Task[] = tasks;
+  if (currentCategory !== "All" && tasksToDisplay)
+    tasksToDisplay = tasksToDisplay?.filter(
+      (task) => task.category === currentCategory
+    );
+
   return (
     <VStack height="calc(100vh - 120px)">
       <Text>Tasks</Text>
       <ScrollArea.Root height="100%" marginBottom="20px">
         <ScrollArea.Viewport>
           <List.Root gap={1.5}>
-            {tasks?.map((task) => (
+            {tasksToDisplay?.map((task) => (
               <TaskItem
-                taskKey={tasks.indexOf(task)}
-                key={tasks.indexOf(task)}
+                id={task.id}
                 date={task.date}
                 title={task.title}
-                onDeleteTask={(key) => onDeleteTask(key)}
+                onDeleteTask={(id) => onDeleteTask(id)}
               />
             ))}
           </List.Root>
