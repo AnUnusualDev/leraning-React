@@ -1,5 +1,5 @@
 import type { Task } from "@/App";
-import { List, ScrollArea, Text, VStack } from "@chakra-ui/react";
+import { List, ScrollArea, VStack } from "@chakra-ui/react";
 import TaskItem from "./TaskItem";
 
 interface Props {
