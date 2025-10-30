@@ -13,7 +13,7 @@ interface Props {
   isDone?: boolean;
   title: string;
   date?: Date;
-  onDeleteTask: (taskKey: string) => void;
+  onDeleteTask: (id: string) => void;
 }
 
 const TaskItem = ({ id, title, date, onDeleteTask }: Props) => {

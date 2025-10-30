@@ -23,6 +23,7 @@ const TaskList = ({ tasks, currentCategory, onDeleteTask }: Props) => {
           <List.Root gap={1.5}>
             {tasksToDisplay?.map((task) => (
               <TaskItem
+                key={task.id}
                 id={task.id}
                 date={task.date}
                 title={task.title}
