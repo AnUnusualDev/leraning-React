@@ -16,8 +16,7 @@ const TaskList = ({ tasks, currentCategory, onDeleteTask }: Props) => {
     );
 
   return (
-    <VStack height="calc(100vh - 120px)">
-      <Text>Tasks</Text>
+    <VStack height="calc(100vh - 120px)" paddingTop={{ base: 5, md: 10 }}>
       <ScrollArea.Root height="100%" marginBottom="20px">
         <ScrollArea.Viewport>
           <List.Root gap={1.5}>

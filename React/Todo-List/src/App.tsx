@@ -73,7 +73,12 @@ function App() {
             onClickCategory={(category) => setCurrentCategory(category)}
           />
         </GridItem>
-        <GridItem area={"main"} backgroundColor="#141416ff" paddingX={10}>
+        <GridItem
+          area={"main"}
+          backgroundColor="#141416ff"
+          paddingX={{ base: 5, md: 10 }}
+          marginTop={{ base: "-30px", md: "0px" }}
+        >
           <TaskList
             tasks={tasks}
             currentCategory={currentCategory}
