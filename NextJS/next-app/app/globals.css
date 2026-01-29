@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: nord;
+}
+
+body {
+}
+
+H1 {
+  @apply font-extrabold text-2xl mb-3;
+}
