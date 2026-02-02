@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Navigation = () => {
   return (
-    <div className="flex h-[55px] bg-racing-red font-bold items-center justify-between px-5">
+    <div className="flex h-[60px] bg-racing-red font-bold items-center justify-between px-5">
       <Link href={"/"}>
         <p>Logo</p>
       </Link>

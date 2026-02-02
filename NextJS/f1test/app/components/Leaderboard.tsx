@@ -15,7 +15,15 @@ const Leaderboard = () => {
           {/* row 1 */}
           <tr>
             <th>1</th>
-            <td>Jonas Miejski</td>
+            <td>
+              {" "}
+              <div className="avatar avatar-placeholder mr-[5px]">
+                <div className="bg-track-dark text-neutral-content w-8 rounded-full">
+                  <span className="text-xs">J</span>
+                </div>
+              </div>
+              Jonas Miejski
+            </td>
             <th className="text-racing-red">54</th>
           </tr>
         </tbody>
