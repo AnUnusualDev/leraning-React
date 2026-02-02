@@ -1,0 +1,16 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@theme {
+  --color-racing-red: #bf0500;
+  --color-track-dark: #15151e;
+  --color-carbon-fiber: #1f1f27;
+  --color-victory-white: #ffffff;
+  --color-asphalt-gray: #949498;
+  --font-sans: var(--font-app), ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  background: #15151e;
+  color: #ffffff;
+}
