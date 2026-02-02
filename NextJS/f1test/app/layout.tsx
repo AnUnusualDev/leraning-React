@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
+import { Roboto, Comic_Neue } from "next/font/google";
 import "./globals.css";
 import Navigation from "./components/Navigation";
 
@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${roboto.variable} antialiased h-screen`}>
+      <body className={`${roboto.className} font-sans antialiased h-screen`}>
         <Navigation />
         {children}
       </body>
