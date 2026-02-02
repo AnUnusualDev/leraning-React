@@ -1,12 +1,17 @@
+import Link from "next/link";
 import React from "react";
 
 const Navigation = () => {
   return (
     <div className="flex h-[55px] bg-racing-red font-bold items-center justify-between px-5">
-      <p>Logo</p>
+      <Link href={"/"}>
+        <p>Logo</p>
+      </Link>
       <div className="avatar avatar-online avatar-placeholder">
         <div className="bg-carbon-fiber text-neutral-content w-12 rounded-full">
-          <span className="text-sm">Jonas</span>
+          <Link href={"/profile"}>
+            <span className="text-sm">Jonas</span>
+          </Link>
         </div>
       </div>
     </div>
