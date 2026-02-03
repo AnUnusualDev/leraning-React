@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${roboto.className} font-sans antialiased h-screen`}>
         <Navigation />
-        {children}
+        <main className="h-[calc(100dvh-110px)] min-h-0">{children}</main>
       </body>
     </html>
   );

@@ -19,7 +19,7 @@ const TabsClient = ({ tabs }: { tabs: Tab[] }) => {
             type="button"
             role="tab"
             className={`
-                tab w-[30vw] p-0 text-asphalt-gray text-m font-bold border-b-[3px] border-carbon-fiber
+                tab w-[30vw] h-[50px] p-0 text-asphalt-gray text-m font-bold border-b-[3px] border-carbon-fiber
                 ${pageState === t.key ? " border-racing-red text-victory-white" : ""}
             `}
             aria-selected={pageState === t.key}
@@ -29,9 +29,10 @@ const TabsClient = ({ tabs }: { tabs: Tab[] }) => {
           </button>
         ))}
       </div>
-      <div>
+      <div className="flex flex-col h-full min-h-0 overflow-hidden">
         {tabs.map((t) => (
           <div
+            className="min-h-0"
             key={t.key}
             style={{ display: pageState === t.key ? "flex" : "none" }}
           >

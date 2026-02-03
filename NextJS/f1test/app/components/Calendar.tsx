@@ -14,7 +14,7 @@ const Calendar = async () => {
   const weekends: Weekend[] | null = data ? data : null;
 
   return (
-    <div className="flex-col justify-center h-full w-full overflow-y-scroll  overflow-x-hidden">
+    <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden">
       {error && <pre>{JSON.stringify(error)}</pre>}
       {weekends?.map((weekend) => (
         <RaceWeekend key={weekend.id} weekend={weekend} />
