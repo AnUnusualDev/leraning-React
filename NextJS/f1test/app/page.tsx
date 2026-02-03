@@ -1,6 +1,7 @@
 import Leaderboard from "./components/Leaderboard";
 import Calendar from "./components/Calendar";
 import TabsClient, { PageState } from "./components/TabsClient";
+export const dynamic = "force-dynamic";
 
 export default function Home() {
   const tabs: { key: PageState; label: string; content: React.ReactNode }[] = [

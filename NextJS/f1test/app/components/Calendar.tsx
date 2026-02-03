@@ -2,8 +2,6 @@ import React from "react";
 import { supabase } from "@/lib/supabaseClient";
 import RaceWeekend from "./Weekend";
 
-export const dynamic = "force-dynamic";
-
 export type Weekend = {
   id: number;
   round: number;
