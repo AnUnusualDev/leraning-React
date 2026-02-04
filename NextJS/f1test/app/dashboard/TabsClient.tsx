@@ -2,7 +2,7 @@
 import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useState, useTransition } from "react";
 
-export type PageState = "leaderboard" | "driver_standings" | "calendar";
+export type PageState = "leaderboard" | "standings" | "calendar";
 
 type Tab = { key: PageState; label: string; content: React.ReactNode };
 

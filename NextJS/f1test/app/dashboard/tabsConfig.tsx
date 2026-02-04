@@ -6,8 +6,8 @@ export const TABS = [
   { key: "leaderboard", label: "leaderboard", content: <Leaderboard /> },
   { key: "calendar", label: "calendar", content: <Calendar /> },
   {
-    key: "driver_standings",
-    label: "driver standings",
+    key: "standings",
+    label: "standings",
     content: <Leaderboard />,
   },
 ] as const;
