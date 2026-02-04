@@ -1,12 +1,34 @@
 "use client";
-import React, { useState } from "react";
+import { useParams, useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
 
 export type PageState = "leaderboard" | "driver_standings" | "calendar";
 
 type Tab = { key: PageState; label: string; content: React.ReactNode };
 
-const TabsClient = ({ tabs }: { tabs: Tab[] }) => {
-  const [pageState, setPageState] = useState<PageState>("leaderboard");
+const TabsClient = ({
+  tabs,
+  initialTab,
+}: {
+  tabs: readonly Tab[];
+  initialTab: PageState;
+}) => {
+  const router = useRouter();
+  const params = useParams<{ slug: string }>();
+  const [pageState, setPageState] = useState<PageState>(initialTab);
+
+  useEffect(() => {
+    const slug = params?.slug as PageState | undefined;
+    if (slug && tabs.some((t) => t.key === slug)) {
+      setPageState(slug);
+    }
+  }, [params?.slug, tabs]);
+
+  const goTo = (key: PageState) => {
+    setPageState(key);
+    router.push(`/dashboard/${key}`);
+  };
+
   return (
     <>
       <div
@@ -23,16 +45,16 @@ const TabsClient = ({ tabs }: { tabs: Tab[] }) => {
                 ${pageState === t.key ? " border-racing-red text-victory-white" : ""}
             `}
             aria-selected={pageState === t.key}
-            onClick={() => setPageState(t.key)}
+            onClick={() => goTo(t.key)}
           >
             {t.label.toUpperCase()}
           </button>
         ))}
       </div>
-      <div className="flex flex-col h-full min-h-0 overflow-hidden">
+      <div className="flex flex-col h-full min-h-0 overflow-hidden items-center">
         {tabs.map((t) => (
           <div
-            className="min-h-0"
+            className="min-h-0 w-full"
             key={t.key}
             style={{ display: pageState === t.key ? "flex" : "none" }}
           >
