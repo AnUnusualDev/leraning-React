@@ -1,10 +1,5 @@
-import React from "react";
-import Calendar from "../../components/Calendar";
-import Leaderboard from "../../components/Leaderboard";
 import TabsClient, { PageState } from "../TabsClient";
 import { DEFAULT_TAB, TABS } from "../tabsConfig";
-
-const validTabs: PageState[] = ["leaderboard", "calendar", "driver_standings"];
 
 const page = ({ params }: { params: { slug: string } }) => {
   const slug = params.slug as PageState;
