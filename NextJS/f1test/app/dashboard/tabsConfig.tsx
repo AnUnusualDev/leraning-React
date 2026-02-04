@@ -1,5 +1,6 @@
 import Calendar from "../components/Calendar";
 import Leaderboard from "../components/Leaderboard";
+import Standings from "../components/Standings/Standings";
 import { PageState } from "./TabsClient";
 
 export const TABS = [
@@ -8,7 +9,7 @@ export const TABS = [
   {
     key: "standings",
     label: "standings",
-    content: <Leaderboard />,
+    content: <Standings />,
   },
 ] as const;
 
