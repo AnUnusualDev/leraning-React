@@ -4,7 +4,7 @@ export const dynamic = "force-dynamic";
 export default function Home() {
   return (
     <>
-      <Link href="/dashboard">Dashboard</Link>
+      <a href="/dashboard">Dashboard</a>
       <div>Racing Tips!</div>
     </>
   );
