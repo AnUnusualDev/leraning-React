@@ -1,9 +1,12 @@
 import StandingsManager from "./StandingsManager";
+import { supabase } from "../../../lib/supabaseClient";
 
-const Standings = () => {
+const Standings = async () => {
+  const { data: drivers } = await supabase.from("Driver").select("*");
+  const { data: constructors } = await supabase.from("Constructor").select("*");
   return (
     <>
-      <StandingsManager driversData={""} constructorsData={""} />
+      <StandingsManager driversData={drivers} constructorsData={constructors} />
     </>
   );
 };
